@@ -1,0 +1,119 @@
+
+        <div class="col-md-12">
+          <div class="box box-info">
+          <form class="form-horizontal" method="post">
+          <input type="hidden" name="id" value="<?php echo $data['module']['id']; ?>">
+          <input type="hidden" name="opt" value="save">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">应用名称</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[name]" require value="<?php echo $data['module']['name']; ?>" id="inputEmail3" placeholder="应用名称">
+                  </div>
+                </div>
+               
+				<div class="form-group">
+		          <label class="col-sm-2 control-label" for="parent_module">所属模块</label>
+		
+                  <div class="col-sm-10">
+				  <select class="form-control" name='data[module_id]' id='parent_module'>
+				  <?php foreach($data['modules'] as $skey=>$sval){ ?>
+				  	<option value='<?=$sval['id']?>' <?php if($sval['id']==$data['module']['module_id']){echo "selected";}?>><?=$sval['name']?></option>
+				  <?php } ?>
+				  </select>
+                </div>
+		        </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">url地址(不可重复)</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[url]" require value="<?php echo $data['module']['url']; ?>" id="inputPassword3" placeholder="url">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">排序</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[sort]" value="<?php echo $data['module']['sort']; ?>" id="inputEmail3" placeholder="排序">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">图标</label>
+ <div class="input-group">
+		  <span class="input-group-addon" id="icon_preview" style="width:100px;">
+		  <i class="<?php echo $data['module']['icon']; ?>"></i>
+		  			  </span>
+          <input type="hidden" id="module_icon" name="data[icon]" value="<?php echo $data['module']['icon']; ?>">
+		  <span class="input-group-addon"><a href="javascript:void(0)" id="btnicon"><i class="fa fa-plus-square"></i></a></span>
+		 </div>
+                </div>
+				<div class="form-group">
+		          <label class="col-sm-2 control-label" for="parent_module">状态</label>
+		
+                  <div class="col-sm-10">
+				  <select class="form-control" name='data[online]' id='parent_module'>
+				  	<option value='1' <?php if(1==$data['module']['online']){echo "selected";}?>>启用</option>
+				  	<option value='0' <?php if(0==$data['module']['online']){echo "selected";}?>>禁用</option>
+				  
+				  </select>
+                </div>
+		        </div>
+				<div class="form-group">
+		          <label class="col-sm-2 control-label" for="parent_module">左侧显示</label>
+		
+                  <div class="col-sm-10">
+				  <select class="form-control" name='data[is_show]' id='parent_module'>
+				  	<option value='1' <?php if(1==$data['module']['module_id']){echo "selected";}?>>是</option>
+				  	<option value='0' <?php if(0==$data['module']['module_id']){echo "selected";}?>>否</option>
+				  
+				  </select>
+                </div>
+		        </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">描述</label>
+                  <div class="col-sm-10">
+                    <textarea id="" name="data[desc]" rows="10" cols="80"><?php echo $data['module']['desc']; ?></textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-default">取消</button>
+                <button type="submit" class="btn btn-info pull-right">提交</button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+            </div>
+            </div>
+
+<script>
+$(document).ready(function(){
+	$("#btnicon").click(function(){
+		$("#selicon").modal('show');
+	});	
+	$(".iconbtn").click(function(){
+		var elem = $(this).find('i');
+		$("#module_icon").val(elem.attr('class'));			
+		$("#icon_preview").html("<i class='"+elem.attr('class')+"'></i>")
+
+		$("#selicon").modal('hide');
+		
+	});
+});
+</script>
+<div class="modal fade" id='selicon'>
+<div class="modal-dialog" style='width:900px;'>
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">请选择图标</h4>
+                  </div>
+                  <div class="modal-body">
+						<?php include('iconselect.html');?>	
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">关闭</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div>
+</div>

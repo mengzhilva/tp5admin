@@ -1,0 +1,41 @@
+<div style='width:100%;text-align:center;'>
+<nav>
+<ul class="pagination pagination-sm no-margin">
+<?php if ($currPage <= 1) {
+        ?>
+                <li class="disabled"><a href="javascript:void(0);">首页</a></li>
+                <li class="disabled"><a href="javascript:void(0);">上一页</a></li>
+                <?php
+} else {
+        ?>
+                <li><a href="<?php echo XUtil::pageUrl(1);?>">首页</a></li>
+                <li><a href="<?php echo XUtil::pageUrl($currPage-1);?>">上一页</a></li>
+<?php
+}
+$patchFirst = floor($currPage/10)*10+1 ;
+$patchLast = $patchFirst + 10;
+if($currPage >= 10){
+        $patchFirst -- ;
+}
+$patchLast = min($totalPage+1, $patchLast);
+for($p = $patchFirst; $p < $patchLast; ++$p) {
+        ?>
+                <li <?php if ($currPage == $p) { echo 'class="active"'; } ?>><a href="<?php echo XUtil::pageUrl($p);?>"><?=$p?></a></li>
+                <?php
+}
+if ($currPage >= $totalPage) {
+        ?>
+                <li class="disabled"><a href="javascript:void(0);">下一页</a></li>
+                <li class="disabled"><a href="javascript:void(0);">末页</a></li>
+                <?php
+} else {
+        ?>
+                <li><a href="<?php echo XUtil::pageUrl($currPage+1);?>">下一页</a></li>
+                <li><a href="<?php echo XUtil::pageUrl($totalPage);?>">末页</a></li>
+                <?php
+}
+?>
+<li class='disabled'><a href='javascript:void(0)'>共有数据<?=$count?>条</a></li>
+</ul>
+</nav>
+</div>

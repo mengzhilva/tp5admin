@@ -1,0 +1,76 @@
+
+        <div class="col-md-12">
+          <div class="box box-info">
+          <form class="form-horizontal" method="post">
+          <input type="hidden" name="id" value="<?php echo $data['module']['id']; ?>">
+          <input type="hidden" name="opt" value="save">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[username]" value="<?php echo $data['module']['username']; ?>" id="inputEmail3" placeholder="用户名">
+                  </div>
+                </div>
+               
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">真实姓名</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[realname]" value="<?php echo $data['module']['realname']; ?>" id="inputPassword3" placeholder="真实姓名">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">密码</label>
+
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" name="data[password]" value="<?php echo $data['module']['password']; ?>" id="inputEmail3" placeholder="密码">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">电话</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[telephone]" value="<?php echo $data['module']['telephone']; ?>" id="inputPassword3" placeholder="电话">
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-default">取消</button>
+                <button type="submit" class="btn btn-info pull-right">提交</button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+            </div>
+            </div>
+
+<script>
+$(document).ready(function(){
+	$("#btnicon").click(function(){
+		$("#selicon").modal('show');
+	});	
+	$(".iconbtn").click(function(){
+		var elem = $(this).find('i');
+		$("#module_icon").val(elem.attr('class'));			
+		$("#icon_preview").html("<i class='"+elem.attr('class')+"'></i>")
+
+		$("#selicon").modal('hide');
+		
+	});
+});
+</script>
+<div class="modal fade" id='selicon'>
+<div class="modal-dialog" style='width:900px;'>
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">请选择图标</h4>
+                  </div>
+                  <div class="modal-body">
+						<?php include('iconselect.html');?>	
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">关闭</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div>
+</div>

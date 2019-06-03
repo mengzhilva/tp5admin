@@ -1,0 +1,46 @@
+{include file="header" /}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+{include file="top" /}
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  {include file="left" /}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+
+        <section class="content-header">
+          <h1>
+            <?=$ParentNav['name']?>
+            <small></small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin/Setting/modulelist/"><i class="fa fa-dashboard"></i> 首页</a></li>
+			<?php if(!empty($ParentNav)){?>
+            <li><a href="<?=$ParentNav['url']?>"><?=$ParentNav['name']?></a></li>
+			<?php } ?>
+          </ol>
+        </section>
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <?php include ('../application/admin/view/'.$_view.'.html') ?>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.3.7
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+ 
+</div>
+<!-- ./wrapper -->
+{include file="footer" /}
